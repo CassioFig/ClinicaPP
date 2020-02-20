@@ -6,6 +6,8 @@
 package View;
 
 import Control.FuncionarioControl;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 
@@ -193,9 +195,10 @@ public class FuncionarioView extends javax.swing.JPanel {
                 .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(128, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addGap(53, 53, 53)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -235,9 +238,7 @@ public class FuncionarioView extends javax.swing.JPanel {
                                     .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
                                     .addComponent(txtEndereco))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1)))
+                    .addComponent(jSeparator1))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -305,6 +306,8 @@ public class FuncionarioView extends javax.swing.JPanel {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         FuncionarioControl fc = new FuncionarioControl();
+        List<Boolean> lista = new ArrayList();
+        
         String nome = String.valueOf(txtNome.getText());
         String endereco = String.valueOf(txtEndereco.getText());
         String numero = String.valueOf(txtNumero.getText());
@@ -313,19 +316,29 @@ public class FuncionarioView extends javax.swing.JPanel {
         String cep = String.valueOf(txtCep.getText());
         String complemento = String.valueOf(txtComplemento.getText());
         
-        fc.setCep(cep);
-        fc.setComplemento(complemento);
-        fc.setCpf(cpf);
-        fc.setEndereco(endereco);
-        fc.setNome(nome);
-        fc.setNumero(numero);
-        fc.setNumero(numero);
-        fc.setRg(rg);
+        lista.add(nome.isBlank());
+        lista.add(endereco.isBlank());
+        lista.add(numero.isBlank());
+        lista.add(rg.isBlank());
+        lista.add(cpf.isBlank());
+        lista.add(cep.isBlank());
         
-        fc.cadastrar();
-        fc.salvar();
-        
-        JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso");
+        if (lista.contains(true)) {
+            JOptionPane.showMessageDialog(null, "[Erro] Existem informações faltando.");
+        } else {
+            fc.setNome(nome);
+            fc.setCep(cep);
+            fc.setComplemento(complemento);
+            fc.setCpf(cpf);
+            fc.setEndereco(endereco);
+            fc.setNumero(numero);
+            fc.setRg(rg);
+            
+            fc.cadastrar();
+            fc.salvar();
+            
+            JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso");
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed

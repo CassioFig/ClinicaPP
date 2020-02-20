@@ -1,0 +1,3 @@
+{"salarioBruto":2.0,"inss":0.16,"irrf":0.0,"salarioLiquido":1.84}
+{"salarioBruto":20000.0,"inss":817.66,"irrf":4405.7835000000005,"salarioLiquido":14776.556499999999}
+{"salarioBruto":2.0,"inss":0.16,"irrf":0.0,"salarioLiquido":1.84}
