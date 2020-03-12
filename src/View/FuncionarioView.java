@@ -324,7 +324,8 @@ public class FuncionarioView extends javax.swing.JPanel {
         lista.add(cep.isBlank());
         
         if (lista.contains(true)) {
-            JOptionPane.showMessageDialog(null, "[Erro] Existem informações faltando.");
+            JOptionPane.showMessageDialog(null, "[Erro] Existem informações "
+                    + "faltando.");
         } else {
             fc.setNome(nome);
             fc.setCep(cep);
@@ -337,7 +338,8 @@ public class FuncionarioView extends javax.swing.JPanel {
             fc.cadastrar();
             fc.salvar();
             
-            JOptionPane.showMessageDialog(null, "Cadastro efetuado com sucesso");
+            JOptionPane.showMessageDialog(null, "Cadastro efetuado com "
+                    + "sucesso");
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
