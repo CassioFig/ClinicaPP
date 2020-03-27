@@ -6,15 +6,15 @@
 package Control;
 
 import Model.FuncionarioModel;
-import Utils.BancoDeDados;
-import com.google.gson.Gson;
+import Model.FuncionarioDB;
 
 /**
  *
  * @author Usuário
  */
 public class FuncionarioControl {
-    FuncionarioModel fm;
+    private FuncionarioModel fm;
+    private int matricula;
     private String nome;
     private String endereco;
     private String numero;
@@ -22,7 +22,12 @@ public class FuncionarioControl {
     private String rg;
     private String complemento;
     private String cpf;
+    private String sexo;
 
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -50,15 +55,19 @@ public class FuncionarioControl {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
     
     public FuncionarioModel cadastrar(){
-        fm = new FuncionarioModel(nome, endereco, numero, cep, rg, complemento, cpf);
+        fm = new FuncionarioModel(matricula, nome, endereco, numero, cep, rg, 
+                complemento, cpf, sexo);
         return fm;
     }
     
     public void salvar(){
-        Gson gson = new Gson();
-        String json = gson.toJson(fm);
-        BancoDeDados.escreverArquivo(json, "cadastroFuncionario.txt");
+        FuncionarioDB fdb = new FuncionarioDB();
+        fdb.cadastrarFuncionario(fm);
     }
 }

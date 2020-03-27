@@ -6,8 +6,7 @@
 package Control;
 
 import Model.FolhaPagamentoModel;
-import Utils.BancoDeDados;
-import com.google.gson.Gson;
+import Model.FolhaPagamentoDB;
 
 /**
  *
@@ -15,21 +14,24 @@ import com.google.gson.Gson;
  */
 public class FolhaPagamentoControl {
     private FolhaPagamentoModel fpm;
+    private int matricula;
     private double salarioBruto;
 
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
+    }
     public void setSalarioBruto(double salarioBruto) {
         this.salarioBruto = salarioBruto;
     }
     
     public FolhaPagamentoModel calcularSalario(){
-        fpm = new FolhaPagamentoModel(salarioBruto);
+        fpm = new FolhaPagamentoModel(matricula, salarioBruto);
         return fpm;
     }
     
-    public void salvar(){
-        Gson gson = new Gson();
-        String json = gson.toJson(fpm);
-        BancoDeDados.escreverArquivo(json, "folhaPagamento.txt");
+    public void cadastrarSalario(){
+        FolhaPagamentoDB fpdb = new FolhaPagamentoDB();
+        fpdb.cadastrarSalario(fpm);
     }
     
 }

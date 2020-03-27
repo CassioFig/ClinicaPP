@@ -10,15 +10,21 @@ package Model;
  * @author Usuário
  */
 public class FuncionarioModel {
-    private String nome;
-    private String endereco;
-    private String numero;
-    private String cep;
-    private String rg;
-    private String complemento;
-    private String cpf;
+    private final int matricula;
+    private final String nome;
+    private final String endereco;
+    private final String numero;
+    private final String cep;
+    private final String rg;
+    private final String complemento;
+    private final String cpf;
+    private final String sexo;
 
-    public FuncionarioModel(String nome, String endereco, String numero, String cep, String rg, String complemento, String cpf) {
+    public FuncionarioModel(int matricula, String nome, String endereco, 
+            String numero, String cep, String rg, String complemento, 
+            String cpf, String sexo) {
+        
+        this.matricula = matricula;
         this.nome = nome;
         this.endereco = endereco;
         this.numero = numero;
@@ -26,8 +32,13 @@ public class FuncionarioModel {
         this.rg = rg;
         this.complemento = complemento;
         this.cpf = cpf;
+        this.sexo = sexo;
     }
 
+    public int getMatricula() {
+        return matricula;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -55,7 +66,10 @@ public class FuncionarioModel {
     public String getCpf() {
         return cpf;
     }
-    
-    
+
+    public String getSexo() {
+        return sexo;
+    }
+  
     
 }

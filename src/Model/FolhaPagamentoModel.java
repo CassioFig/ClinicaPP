@@ -10,15 +10,34 @@ package Model;
  * @author Usuário
  */
 public class FolhaPagamentoModel {
+    private int matricula;
     private double salarioBruto;
     private double inss;
     private double irrf;
     private double salarioLiquido;
 
-    public FolhaPagamentoModel(double salarioBruto) {
+    public FolhaPagamentoModel(int matricula, double salarioBruto) {
+        this.matricula = matricula;
         this.salarioBruto = salarioBruto;
     }
 
+    public FolhaPagamentoModel(int matricula, double salarioBruto, double inss,
+        double irrf, double salarioLiquido) {
+        this.matricula = matricula;
+        this.salarioBruto = salarioBruto;
+        this.inss = inss;
+        this.irrf = irrf;
+        this.salarioLiquido = salarioLiquido;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public double getSalarioBruto() {
+        return salarioBruto;
+    }
+    
     public double getInss() {
         if(salarioBruto < 1751.82){
             this.inss = salarioBruto * 0.08;
